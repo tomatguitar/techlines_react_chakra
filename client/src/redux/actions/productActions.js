@@ -2,9 +2,9 @@ import axios from "axios";
 import { setProducts, setErrors, setLoading } from "../slices/products";
 
 export const getProducts = () => async (dispatch) => {
+  dispatch(setLoading());
   try {
-    const { data } = await axios.get("/api/products");
-    dispatch(setLoading());
+    const { data } = await axios.get("api/products");
     dispatch(setProducts(data));
   } catch (error) {
     dispatch(
